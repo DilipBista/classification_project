@@ -1,196 +1,112 @@
 
+Classification Project 
+
 About the Project
 
 Project Goals
 
-The goal of this project is to identify the drivers for customer churn at Telco and provide recommendations to minimize curtomer churn rate. 
+    The goal of this project is to create a classification module. This module can generate a list of customers who have high probability to churn by identifing main drivers of churn. For this project we have access to codeup database (telco_churn) from where we can pull the data. 
 
 
 Project Description
 
-Your readme should include a project description that provides context for your project, including explaining why you are tackling this project, why it is important and how it could be of use to someone else beyond just the interest or new knowledge. It dives in a bit deeper than the goals. Project description and goals should always be in your words and specific to your project, not a copy of the class project spec. Here's the problem, here's how I want to address it, here's what I will deliver
+    This project provides us the opportunity to implement our knowledge in statistics, SQL, python programming, data science libraries and classification module. We will creating and evaluating various predictive models that are part of data science pipeline. 
+    In order to complete this project we have to go through various processes such as acquiring Telco data from SQL database; observing data; cleaning data; preparing data; create functions; splitting data into train ,test and validate;  exploratory data analysis; modeling; model evaluation; model testing and presenting our findings and recommendations. 
 
-For example:
+    Due to high competition in telecommunication business there is a higher churn rate, our primary task for this project is to identify drivers of higher churn and provide possible recommendation to reduce churn rate. 
 
-The weather is getting more and more extreme and unpredictable. We often think of the Titanic is something in the past that won't happen again. However, these events could become more frequent with the change in the oceanic warming and atmospheric changes. We will analyze the attributes of passengers who were more or less likely to survive, develop a model for predicting survival based on those attributes, and leave with both recommendations for future passengers and predictions of survival for a list of passengers on the next ship leaving (delivered via csv).
+
 
 Initial Questions
 
-Your readme should include initial questions and focus you are going into the analysis with. This is an important part of project planning and gives context to the reader about where you started, what were your initial ideas and thoughts, and did those play out to be true.
+    Where do we acquire the data?
+    What are the main driver of Telco churn?
+    Are there any duplicates in Data?
+    Are there any misssing values in data ?
+    Are customers with DSL more or less likely to churn?
+    What month are customers most likely to churn and does that depend on their contract type?
+    Is there a service that is associated with more churn than expected?
+    Do customers who churn have a higher average monthly spend than those who don't?
 
-For example:
 
-Was the phrase "women and children first" just a myth or did they really try to get out women and children first? If so, they would show as more likely to survive.
+Data Dictionary:
 
-Do those who travel first class get quicker access to life boats?
+    customer_id: unique identifier for each customer
+    senior_citizen: (int) 1 indicates the customer is a senior citizen, 0 indicates they are not
+    partner: (int) 1 indicates they have partners, 0 indicates they don’t have partners
+    dependents: (int) 1 indicates they have dependents, 0 indicates they don’t have dependents
+    tenure: (int) length customer has been with the company in months
+    phone_service: (int) 1 indicates they have phone service, 0 indicates they don’t have phone service
+    multiple_lines: (int) 1 indicates they have multiple lines, 0 indicates that they don’t
+    online_security: (int) 1 indicates customers opted in for online security service, 0 indicates they havent
+    device_protection: (int) 1 indicates customers have device protection, 0 indicates they dont
+    tech_support: (int) 1 indicates customers have tech support, 0 indicates they dont
+    streaming_movies: (int) 1 indicates customers have streaming movie service, 0 indicates they dont
+    paperless_billing: (int) 1 indicates customers have enrolled in paperless billing, 0 indicates they havent
+    monthly_charges: (int) monthly charge of a customer
+    total_charges: (float) total charges customers have paid
+    churn: (int) 1 to represent customers that have churned, 0 represent they havent
+    partner_dependents: (bool) to represent if customers have both partner and dependents
+    phone_and_multiple_lines: (bool) to represent if customers have both phone and multiple lines
+    streaming_tv_movie: (bool) to represent if customers have both streaming tv and movie
+    online_security_and_backup: (bool) to represent if customers have both online security and back up
+    payment_auto: (int) 1 indicates customers have automatic payment, 0 indicates they have not
+    month-to-month: (int) 1 indicates customers are with month to month, 0 indicates they have other form of contract
+    one year: (int) 1 indicates customers are with one year, 0 indicates they have other form of contract
+    two year: (int) 1 indicates customers are with two year, 0 indicates they have other form of contract
+    DSL: (int) 1 indicates customers have DSL, 0 indicates they have other form of internet
+    fiber optic: (int) 1 indicates customers have fiber optic, 0 indicates they have other form of internet
 
-Do families with small children get priority access? Even if they at the bottom of the boat in 3rd class?
 
-Data Dictionary
+Project Planning
 
-Your readme should include a data dictionary, which is important to provide in order to define and disambiguate each of the variables you are analyzing.
+Data Acqusition:
 
-For example:
+     Acquire data from CodeUp database. You are required to have credentials to access the data base.
+     Create a cache in your local repository in order to prevent from having to access the database every time you re-work on the project
+     Create acquire.py for reproducibility
 
-Variable	Meaning
-Survived	
-Steps to Reproduce
 
-Your readme should include useful and adequate instructions for reproducing your analysis and final report.
+Data Preparation:
 
-For example:
+     Summarize data
+     Check for duplicates, removed duplicates if present
+     Check for null values, missing values, and get count of them
+     Check the data types
+     Perform feature engineering
+     Perform data types conversion/Use Dummy variables
+     Drop redundant/useless columns
+     Split data into Train, Test, and Validate; ~50%-30%-20% split train-validate-test; 
+     Create prepare.py
 
-You will need an env.py file that contains the hostname, username and password of the mySQL database that contains the titanic_db.passengers table. Store that env file locally in the repository.
-clone my repo (including the acquireTitanic.py and prepare.Titanic.py) (confirm .gitignore is hiding your env.py file)
-libraries used are pandas, matplotlib, seaborn, numpy, sklearn.
-you should be able to run survival_report.
-The Plan
 
-Your readme should include a project plan which helps guide both the user and yourself through the different stages of the pipeline and steps you took to get to your conclusion.
 
-Wrangle
+Data Exploration:
 
-Modules (acquire.py + prepare.py)
+     Explore various features and relationships
+     Vizualize data
+     Impute missing values
+     Test different hypothesis
 
-Module(s) with user-defined functions for acquiring and preparing the data should be created.
+Model Building
 
-Each function contains a helpful docstring explaining what it does, its input(s) and output(s).
+     Try various algorithms(Logit, Random Forest, KNN, Decision Tess) on Train data
+     Perform model evaluation
+     Pick top 3 perfomring models
+     Validate top 3 models on validate data and evaluate their performance
+     Pick best performing model on validate data
+    Use the top model with test data set and evaluate your model
 
-Credentials (such as in an env.py file) are NOT included in the public repo.
 
-For example:
+Conclusion
 
-test acquire function
-add to acquire.py module
-write code to clean data in notebook
-merge code into a single function & test
-write code to split data in notebook
-merge code into a single function & test
-merge functions in a single function & test
-Add all 3 functions (or more) to prepare.py file
-import into notebook and test functions
-Missing Values (report.ipynb)
+Summarize the process
+Summarize findings
+Make recommendations
 
-Decisions made and reasons are communicated and documented for handling missing values.
 
-(later projects) If you imputed based on computing a value (such as mean, median, etc), that was done after splitting the data, and the value was derived from the training dataset only and then imputed into all 3 datasets. If you filled missing values with 0 or a constant not derived from existing values, that can be done prior to splitting the data.
 
-For example:
 
-handle missing values for age in a way to be able to keep what is there
-if there are columns > 70% missing then I will drop those columns.
-Data Split (prepare.py (def function), report.ipynb (run function))
-
-When splitting data into samples, there should be 3 adequately sized samples - train, validate, and test. As a good starting point, 50%, 30%, and 20%, (or 50%, 26%, 24% for simplicity when doing the splitting) are reasonable split proportions. But that can vary depending on the number of observations you have. Test can go as low as 10% if needed.
-
-Someone should be able to run your code and get the same observations in the same samples, i.e. reproduce your split, because you set the random state to a seed.
-
-Data should always be split prior to exploration of variable relationships.
-
-(later projects) In addition, imputers, scalers, feature elimination or selection algorithms should all be run after the split so that they are fit on train and transformed on validate and test.
-
-For example:
-
-Use function we have used in class, as that one seems to meet all the requirements.
-Using your modules (report.ipynb)
-
-After creating the wrangle module(s), you want to import those into your final report so that you can use those functions you wrote to acquire and prepare your data with ease, with little clutter, and with reduced risk of running into issues when reproducing the report.
-
-The functions should be called to prepare your data (as opposed to re-writing the code of the functions in your notebook), and you should include in a markdown cell, the steps you took to prepare the data and why you made the decisions you did.
-
-For example:
-
-once acquire.py and prepare.py are created and tested, import into final report notebook to be ready for use.
-Explore
-
-Ask a clear question, [discover], provide a clear answer (report.ipynb)
-
-At least 4 of the questions asked and answered of the data are shared in the final report notebook.
-
-You should call out questions of the data using natural language that speaks to the business stakeholders in markdown cells, ideally a header prior to the visualization or statistical test, that you then explore. This does not take the place of stating your null hypothesis/alternative hypothesis when doing a statistical test. But those hypotheses are generally for you. By writing questions that you intend to answer with visualizations and statistical tests in natural language, like ""Are office supplies leading to differences in profit in Texas?"", you are able to guide both yourself and your reader through the highlights of your analysis. You ask a question, create a visual, run a statistical test (if appropriate), and wrap it nicely with a markdown cell that contains a clear answer in layman's terms. You do all that before moving to the next question.
-
-For example:
-
-Was the phrase "women and children first" just a myth or did they really try to get out women and children first? If so, they would show as more likely to survive.
-
-Do those who travel first class get quicker access to life boats?
-
-Do families with small children get priority access? Even if they at the bottom of the boat in 3rd class?
-
-Did traveling alone make a difference? Did it depend on sex? What was the survival rate for women traveling alone vs. men traveling along?
-
-If families were more likely to be saved, is there a max family size where that benefit is lost?
-
-Contextual questions: Did most people die or survive? How many men/women were on the boat? How many across different classes?
-
-Exploring through visualizations (report.ipynb)
-
-At least 5 visualations are included in your final report.
-
-The ones included answer a question (remember, NO is an answer) or provide necessary context (such as the distribution of the target variable). All statistical tests included in the final report should be supported with an visualization of the interaction of the variables being tested. Charts in the final report should have titles and labels that are descriptive and useful for the end user/audience/consumer of the report.
-
-All visualizations in the final report are mentioned or discussed if a verbal presentation is given.
-
-For example:
-
-Was the phrase "women and children first" just a myth or did they really try to get out women and children first? If so, they would show as more likely to survive.
-are women more likely to survive? plot barplot x-axis is sex and y-axis is survival rate
-are children more likely to survive? bin age into 0-16, 17+, plot barplot on x-axis where y is survival rate (new variable = is_child)
-run chi-square test sex + survival
-run a chi-square test is_child + survival
-run a t-test on age and survived
-Do those who travel first class get quicker access to life boats?
-Do families with small children get priority access? Even if they at the bottom of the boat in 3rd class?
-
-Did traveling alone make a difference? Did it depend on sex? What was the survival rate for women traveling alone vs. men traveling along?
-
-If families were more likely to be saved, is there a max family size where that benefit is lost?
-
-Contextual questions: Did most people die or survive? How many men/women were on the boat? How many across different classes?
-
-plot 3 subplots of proportions - pie/donut - survived, sex, class.
-Statistical tests (report.ipynb)
-
-At least 2 statistical tests are included in your final report.
-
-The correct tests are run, given the data type and distribution, and the correct conclusions are drawn. For example (other tests may be used):
-
-correlation: 2 continuous variables, normally distributed, testing for LINEAR correlation only (H_0: Not linearly dependent)
-
-independent t-test: 1 continuous, somewhat normally distributed variable, one boolean variable, equal variance, independent (H_0: population mean of each group is equal)
-
-chi-square test: 2 discrete variables. (H_0: the 2 variables are independent of each other).
-
-Summary (report.ipynb)
-
-Following your exploration section, you summarize your analysis (in a markdown cell using natural language): what you found and how you will use it moving forward.
-
-This includes key takeaways from all the questions answered in explore, a list of which features will be used in modeling and why, and which features will not move forward and why. You may only call out a few of these features in the presentation, but having that there for reference is important in a report. A group of features may have the same reason why, and those can be mentioned together.
-
-Modeling
-
-Select Evaluation Metric (Report.ipynb)
-
-Clear communication as to how you evaluated and compared models.
-
-What metric(s) did you use and why? For example, in one case, you may decide to use precision over accuracy. If so, why? If you use multiple metrics, how will you decide which to select if metric is better for model A but another is better for model B? Will you rank them? Find a way to aggregate them into a single metric you can use to rank?
-
-Evaluate Baseline (Report.ipynb)
-
-Having a baseline tells you whether a model you build using the features you selected is any better than predicting by using only the target variable. One way a baseline is created in classification is by making predictions purely based on the most common outcome class, like predicting that all titanic passengers will die, becuase the majroity did die. By doing that, you end up with the highest accuracy without using extra information from features. The baseline is based on the training dataset. For a continuous target variable, the baseline could be predicting that all salaries will be the median salary of our labeled train data. The predictions should be made on the training data using this information (like the predicted value, y_hat, for all passengers "survived" == 0) and then performance evaluated to measure your models against. If any model you build does not perform as well as a baseline that uses no features, then your features are not significant drivers of the outcome.
-Develop 3 Models (Report.ipynb)
-
-The 3 models can differ based on the features used, the hyperparameters selected, and/or the algorithm used to fit the data.
-Evaluate on Train (Report.ipynb)
-
-All models should be evaluated on train: the training sample is our largest sample, and it is a sample of data we have to both fit the model AND see how the model performs. We should never skip straight to validate. We would be missing out on valuable observations.
-Evaluate on Validate (Report.ipynb)
-
-*The top models should be evaluated with the validation sample dataset. It is important to use the validate sample for checking for any overfitting that may have occurred when fitting the model on train. If you are creating 10's of models, it is also important to only validate a handful of your top models with the Validate dataset. Otherwise, your data will have seen validate as much as train and you could accidentally introduce some implicit bias based on data and results you see while validating on so many models. *
-Evaluate Top Model on Test (Report.ipynb)
-
-Your top performing model, and only your top performing model should be evaluated on your test dataset. The purpose of having a test dataset to evaluate only the final model on is to have an estimate of how the model will perform in the future on data it has never seen.
-Report (Final Notebook)
 
 code commenting (Report.ipynb)
 
@@ -223,11 +139,7 @@ content (live)
 Notebook talked through step-by-step, in an understandable and meaningful way. Extraneous content in the notebook is not present.
 Verbal Conclusion (findings, next steps, recommendations) (live)
 
-Presentation is concluded with a summary of what was found, recommendations, and next steps. The presentation does not just drop off after modeling, but the entire project is nicely tied up and summarized.
-time (live)
 
-Time limit of 5 minutes is adhered to. The time is managed well, in that there is appropriate time spent on each section. The time of 5 minutes should not be met by talking quickly but by reducing the amount or depth of information conveyed, and by finding easier and more simplified methods to convey the more complex information. The speech should be natural, and take the time needed for the audience to consume the information. So the time is well spent when you have practiced and you have taken the extra time it takes to reduce the content in your notebook and presentation. Time should not be spent scrolling through 10's of visualizations or hundreds of lines of code.
-Deliver Predictions
 
 Deliver predictions (.csv)
 
